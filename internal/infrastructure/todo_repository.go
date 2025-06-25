@@ -22,7 +22,7 @@ func (r *TodoRepositoryImpl) Create(todo *domain.Todo) error {
 
 func (r *TodoRepositoryImpl) GetByID(id uint) (*domain.Todo, error) {
 	var todo domain.Todo
-	if err := r.db.DB.Preload("User").First(&todo, id).Error; err != nil {
+	if err := r.db.DB.First(&todo, id).Error; err != nil {
 		return nil, err
 	}
 	return &todo, nil
